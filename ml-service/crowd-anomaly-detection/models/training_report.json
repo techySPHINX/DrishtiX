@@ -1,0 +1,190 @@
+{
+  "trained_at": "2026-02-27T17:24:04.936263",
+  "dataset_rows": 54000,
+  "train_events": [
+    "EVT-007",
+    "EVT-001",
+    "EVT-005",
+    "EVT-004",
+    "EVT-003",
+    "EVT-002",
+    "EVT-006",
+    "EVT-008"
+  ],
+  "test_events": [
+    "EVT-010",
+    "EVT-009"
+  ],
+  "contamination": 0.03,
+  "n_features": 23,
+  "feature_cols": [
+    "crowd_density",
+    "capacity_utilization",
+    "density_delta",
+    "density_delta_abs",
+    "density_rolling_mean_5",
+    "density_rolling_std_5",
+    "density_rolling_mean_10",
+    "density_rolling_std_10",
+    "density_z_score",
+    "flow_rate_in",
+    "flow_rate_out",
+    "net_flow",
+    "flow_imbalance_ratio",
+    "adjacent_zone_pressure",
+    "exit_proximity_score",
+    "dwell_time_minutes",
+    "crowding_pressure",
+    "perceptual_overload",
+    "temperature_celsius",
+    "noise_level_db",
+    "hour_of_day",
+    "minutes_since_event_start",
+    "is_peak_hour"
+  ],
+  "anomaly_rate_actual": 0.0036666666666666666,
+  "models": {
+    "isolation_forest": {
+      "model_name": "Isolation Forest",
+      "precision": 0.0954,
+      "recall": 0.8158,
+      "f1_score": 0.1708,
+      "roc_auc": 0.9433,
+      "avg_precision": 0.6896,
+      "confusion_matrix": {
+        "TP": 31,
+        "FP": 294,
+        "FN": 7,
+        "TN": 10468
+      },
+      "n_predicted_anomalies": 325,
+      "n_true_anomalies": 38,
+      "per_type": {
+        "NORMAL": {
+          "total": 10762,
+          "false_pos_rate": 0.0273
+        },
+        "STAMPEDE_PRECURSOR": {
+          "total": 12,
+          "caught": 12,
+          "recall": 1.0
+        },
+        "FLOW_REVERSAL": {
+          "total": 8,
+          "caught": 1,
+          "recall": 0.125
+        },
+        "ISOLATION_ZONE": {
+          "total": 6,
+          "caught": 6,
+          "recall": 1.0
+        },
+        "BOTTLENECK": {
+          "total": 5,
+          "caught": 5,
+          "recall": 1.0
+        },
+        "CROWD_SURGE": {
+          "total": 7,
+          "caught": 7,
+          "recall": 1.0
+        }
+      }
+    },
+    "lof": {
+      "model_name": "Local Outlier Factor",
+      "precision": 0.1,
+      "recall": 1.0,
+      "f1_score": 0.1818,
+      "roc_auc": 0.9995,
+      "avg_precision": 0.9313,
+      "confusion_matrix": {
+        "TP": 38,
+        "FP": 342,
+        "FN": 0,
+        "TN": 10420
+      },
+      "n_predicted_anomalies": 380,
+      "n_true_anomalies": 38,
+      "per_type": {
+        "NORMAL": {
+          "total": 10762,
+          "false_pos_rate": 0.0318
+        },
+        "STAMPEDE_PRECURSOR": {
+          "total": 12,
+          "caught": 12,
+          "recall": 1.0
+        },
+        "FLOW_REVERSAL": {
+          "total": 8,
+          "caught": 8,
+          "recall": 1.0
+        },
+        "ISOLATION_ZONE": {
+          "total": 6,
+          "caught": 6,
+          "recall": 1.0
+        },
+        "BOTTLENECK": {
+          "total": 5,
+          "caught": 5,
+          "recall": 1.0
+        },
+        "CROWD_SURGE": {
+          "total": 7,
+          "caught": 7,
+          "recall": 1.0
+        }
+      }
+    },
+    "ocsvm": {
+      "model_name": "One-Class SVM",
+      "precision": 0.1108,
+      "recall": 0.9737,
+      "f1_score": 0.1989,
+      "roc_auc": 0.9958,
+      "avg_precision": 0.8269,
+      "confusion_matrix": {
+        "TP": 37,
+        "FP": 297,
+        "FN": 1,
+        "TN": 10465
+      },
+      "n_predicted_anomalies": 334,
+      "n_true_anomalies": 38,
+      "per_type": {
+        "NORMAL": {
+          "total": 10762,
+          "false_pos_rate": 0.0276
+        },
+        "STAMPEDE_PRECURSOR": {
+          "total": 12,
+          "caught": 12,
+          "recall": 1.0
+        },
+        "FLOW_REVERSAL": {
+          "total": 8,
+          "caught": 7,
+          "recall": 0.875
+        },
+        "ISOLATION_ZONE": {
+          "total": 6,
+          "caught": 6,
+          "recall": 1.0
+        },
+        "BOTTLENECK": {
+          "total": 5,
+          "caught": 5,
+          "recall": 1.0
+        },
+        "CROWD_SURGE": {
+          "total": 7,
+          "caught": 7,
+          "recall": 1.0
+        }
+      }
+    }
+  },
+  "best_model": "ocsvm"
+}
