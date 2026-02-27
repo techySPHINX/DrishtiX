@@ -1,58 +1,180 @@
+# ──────────────────────────────────────────────
 # Dependencies
+# ──────────────────────────────────────────────
 node_modules/
 .pnpm-store/
 venv/
+.venv/
+env/
+ENV/
+.env_backup/
 
+# ──────────────────────────────────────────────
 # Build outputs
+# ──────────────────────────────────────────────
 dist/
 build/
 .vite/
+out/
+*.tsbuildinfo
 
-# Environment variables
+# ──────────────────────────────────────────────
+# Environment variables & secrets
+# ──────────────────────────────────────────────
 .env
 .env.local
 .env.*.local
+.env.production
+.env.staging
+.env.development
 
-# GCP Service Account Keys & Credentials
+# ──────────────────────────────────────────────
+# Cloud & credentials (GCP, Firebase, AWS)
+# ──────────────────────────────────────────────
 *-service-account.json
 *-credentials.json
 service-account-key.json
 gcp-*.json
 google-credentials.json
+firebase-adminsdk*.json
+*-firebase-adminsdk*.json
+firebaseServiceAccount*.json
+aws-credentials.json
+*.pem
+*.key
+*.p12
+*.pfx
 
+# ──────────────────────────────────────────────
+# Terraform
+# ──────────────────────────────────────────────
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.backup
+*.tfvars
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# ──────────────────────────────────────────────
+# Python
+# ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+Pipfile.lock
+
+# ──────────────────────────────────────────────
+# ML / Data Science artifacts
+# ──────────────────────────────────────────────
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.joblib
+*.pt
+*.pth
+*.onnx
+*.pb
+*.tflite
+*.npy
+*.npz
+
+# ──────────────────────────────────────────────
 # Logs
+# ──────────────────────────────────────────────
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+logs/
+*.log.*
 
+# ──────────────────────────────────────────────
 # Editor directories and files
+# ──────────────────────────────────────────────
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
 .idea/
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
 
-# Testing
+# ──────────────────────────────────────────────
+# OS generated files
+# ──────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ──────────────────────────────────────────────
+# Testing & coverage
+# ──────────────────────────────────────────────
 coverage/
 .nyc_output/
+test-results/
+playwright-report/
+*.lcov
 
-# Misc
-*.tsbuildinfo
+# ──────────────────────────────────────────────
+# Package manager lock files (keep pnpm-lock.yaml in sync, ignoring others)
+# ──────────────────────────────────────────────
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ──────────────────────────────────────────────
+# Misc / temporary
+# ──────────────────────────────────────────────
 .eslintcache
 .cache/
 temp/
 tmp/
-
-# OS
-Thumbs.db
-.DS_Store
-
-pnpm-lock.yaml
+*.tmp
+*.bak
+*.orig
+*.swp
+*.zip
+*.tar.gz
+*.gz
+*.rar
