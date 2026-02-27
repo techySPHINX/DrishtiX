@@ -1,0 +1,48 @@
+# DrishtiX Crowd Anomaly Detection — Visual Detector Config
+# Settings for the CLIP-based VisualCrowdDetector.
+
+model-settings:
+  model-name: 'ViT-B/32'          # CLIP architecture (ViT-B/32 is good balance of speed/accuracy)
+  device: 'cpu'                    # 'cuda' for GPU acceleration
+  prediction-threshold: 0.22      # Minimum cosine similarity to trust a label prediction
+
+label-settings:
+  # ── Normal crowd states ─────────────────────────────────────
+  # Include realistic descriptions — more specific = better CLIP accuracy
+  labels:
+    # Normal
+    - 'people walking normally in a crowd'
+    - 'people standing in a queue or line'
+    - 'sparse crowd in an open venue'
+    - 'crowd watching an event or performance'
+    - 'crowd dispersing calmly after an event'
+    - 'people sitting in stadium seats'
+    - 'group of people talking or socialising'
+    - 'empty venue or concert hall'
+    # Crowd surge / overcrowding
+    - 'dense overcrowded area with no space to move'
+    - 'crowd pushing and crushing at entry gate'
+    # Stampede
+    - 'stampede or mass panic in a crowd'
+    - 'people running in panic or fear'
+    # Bottleneck / blocked exits
+    - 'bottleneck crowd blocked at an exit'
+    - 'crowd blocked at a narrow corridor'
+    # Flow reversal
+    - 'sudden reversal of crowd movement direction'
+    - 'people rushing back against crowd flow'
+    # Isolation / evacuation
+    - 'section of venue suddenly empty or evacuated'
+    # Fight / violence
+    - 'fight or physical violence in a crowd'
+    # Fire / hazard
+    - 'fire or smoke visible in a crowd'
+    # Medical emergency
+    - 'medical emergency in a crowd'
+    - 'person fallen or trampled in crowd'
+
+  default-label: 'scene unclear'   # returned when confidence < prediction-threshold
+
+temporal-smoother:
+  window: 8          # rolling window of N frames
+  threshold: 0.40    # fraction of window frames that must score as anomalous to trigger alert
